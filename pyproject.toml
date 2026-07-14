@@ -1,0 +1,49 @@
+[project]
+name = "docker-e2b-mcp-agent"
+version = "1.0.0"
+description = "A secure E2B MCP automation agent for GitHub and Notion, powered by the OpenAI Agents SDK and Nebius Token Factory."
+readme = "README.md"
+requires-python = ">=3.13"
+license = { text = "MIT" }
+authors = [{ name = "Tirth Rank" }]
+keywords = ["e2b", "mcp", "openai-agents", "github", "notion", "nebius"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+dependencies = [
+  "e2b>=2.31.0,<3.0.0",
+  "openai-agents>=0.18.1,<0.19.0",
+  "python-dotenv>=1.1.1,<2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.4.1,<9.0.0",
+  "pytest-asyncio>=1.1.0,<2.0.0",
+  "ruff>=0.12.2,<1.0.0",
+]
+
+[project.scripts]
+e2b-mcp-agent = "docker_e2b_mcp_agent.cli:main"
+
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/docker_e2b_mcp_agent"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "SIM", "UP"]
