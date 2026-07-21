@@ -14,7 +14,7 @@ classifiers = [
   "Topic :: Software Development :: Libraries :: Application Frameworks",
 ]
 dependencies = [
-  "e2b>=2.31.0,<3.0.0",
+  "e2b>=2.34.0,<3.0.0",
   "openai-agents>=0.18.1,<0.19.0",
   "python-dotenv>=1.1.1,<2.0.0",
 ]
